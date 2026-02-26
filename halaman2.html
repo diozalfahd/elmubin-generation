@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web El Mubin Generation</title>
+        <style>
+            body {
+                background-color: antiquewhite;
+                margin: 0;
+                padding-top: 60px; /* kasih jarak sesuai tinggi navbar */
+            }
+
+            .navbar {
+                background-color: rgb(233, 186, 241);
+                overflow: hidden;
+                padding: 10px;
+                position: fixed;                     /*bikin navbar tetap di atas */
+                top: 0;                              /*posisi di atas layar */
+                width: 100%;                         /*lebar penuh */
+                z-index: 100;                        /*biar selalu di atas konten lain */
+                transition: background-color 0.5s;   /*buat animasi halus */
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+            }
+
+            .navbar a:hover {
+                color: rgb(0, 0, 0);
+                border-radius: 5px;
+            }
+
+            .navbar a,.dropbtn {
+                display: flex;
+                align-items: center;
+                height: 40px;
+            }
+
+            .dropdown {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+
+            .dropbtn {
+                background: none;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                cursor: pointer;
+                font-size: 16px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: white;
+                min-width: 150px;
+                border-radius: 5px;
+            }
+
+             .dropdown-content a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: black;
+            }
+
+            .dropdown-content a:hover {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: black;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+            .dropdown:hover .dropdown-content{
+                display: block;
+            
+            }
+
+            h1 {
+                color: black;
+                display: block;
+                margin: auto;
+            }
+
+            p {
+                color: black;
+            }
+
+            button {
+                background-color: aliceblue;
+                color: maroon;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: transform 0.3s, background-color 0.3s;  /*animasi halus */
+            }
+
+            button:hover {
+                background-color: rgb(0, 6, 41);
+                transform: scale(1.1);  /*tombol sedikit membesar hover */
+            }
+
+            .fade-in {
+                opacity: 0;    /*awalnya transparan */
+                transform: translateY(30px);  /*sedikit turun */
+                transition: opacity 1s ease-out, transform 1s ease-out;
+            }
+
+            .fade-in.show {
+                opacity: 1;
+                transform: translateY(0);  /*naik ke posisi normal */
+            }
+
+            img {
+                background: transparent;
+                width: 400px;
+                border-radius: 10px;
+                display: block;
+                margin: auto;
+            }
+
+            .fade-img {
+                opacity: 0;    /*awalnya transparan */
+                transform: scale(0.8);  /*sedikit turun */
+                transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
+
+            }
+
+            .fade-img.show {
+                opacity: 1;
+                transform: scale(1);  /*naik ke posisi normal */
+
+            }
+
+            h2 {
+                text-align: center;
+                margin-top: 100px;
+            }
+        </style>
+    </head>
+<body>
+    <div class="navbar" id="myNavbar">
+                <a href="halaman 1.html">Home</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div style="height: 1500px;">
+    <h1 class="fade-in">EL MUBIN GENERATION</h1>
+    <P class="fade-in">2019-2025</P>
+    <img src="mbin.png" class="fade-img">
+    <button onclick="window.location.href='halaman 2.html'">Klik Pindah</button>
+
+    <h2 id="Menu" class="fade-in">Menu Kami</h2>
+    <p class="fade-in">Ini adalah bagian manu website</p>
+
+    <h2 id="about" class="fade-in">About Us</h2>
+    <p class="fade-in">Website ini di buat untuk mengenang EL MUBIN GENERATION.</p>
+
+    <H2 id="contact" class="fade-in">Contact</H2>
+    <p class="fade-in">Instagram @ELMUBIN</p>
+    <script>
+window.onscroll = function () {
+    ubahNavbar();
+    munculFade();
+};
+
+function ubahNavbar() {
+    var navbar = document.getElementById("myNavbar");
+
+    if (window.scrollY > 50) {
+        navbar.style.backgroundColor = "#3377ff";
+    } else {
+        navbar.style.backgroundColor = "rgb(233, 186, 241)";
+    }
+}
+
+/* ambil semua elemen fade */
+const faders = document.querySelectorAll('.fade-in,.fade-img');
+
+function munculFade() {
+    faders.forEach(fade => {
+        const top = fade.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (top < windowHeight - 50) {
+            fade.classList.add('show');
+        }
+    });
+}
+
+window.onload = munculFade;
+    </script>
+    </div>
+</body>
+</html>
