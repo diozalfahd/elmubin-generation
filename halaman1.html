@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web El Mubin Generation</title>
+
+<style>
+
+/* scroll halus */
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background-color: antiquewhite;
+    margin:0;
+    padding-top:50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.hero{
+    height:100vh;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,0.4),
+    rgba(0,0,0,0.4)),
+    url("mbinnu.jpeg");
+
+    background-size:105%;
+    background-position:0% 90%;
+    background-repeat:no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    color:white;
+}
+
+.hero-content{
+    transform:translateY(-30px);
+}
+
+
+p {
+    font-style:italic;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    background-color: rgb(47, 92, 255);
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 0;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    z-index:1000;
+    transition:0.4s;
+    backdrop-filter: blur(10px);
+}
+
+.navbar a{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 15px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.navbar a:hover{
+    color:black;
+}
+
+.navbar a::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    background:white;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    background-color: antiquewhite;
+    min-height:100vh;
+    text-align:center;
+    padding-top:100px;
+    box-shadow:0 -5px 20px rgba(0,0,0,0.1);
+}
+
+/* ================= IMAGE ================= */
+
+img{
+    width:90%;
+    max-width: 400px;
+    border-radius:10px;
+    margin-top:20px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* ================= BUTTON ================= */
+
+button{
+    margin: 10px;
+    margin-top:20px;
+    background-color:aliceblue;
+    color:maroon;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color:#000629;
+    color:white;
+    transform:scale(1.1);
+}
+
+/* ================= FADE EFFECT ================= */
+
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar" id="myNavbar">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</div>
+
+
+<!-- ================= HOME ================= -->
+
+<div id="home" class="hero">
+    <div class="hero-content fade">
+    <h1 >EL MUBIN GENERATION</h1>
+    <p >2019 - 2025</p>
+
+    <img src="mbin.png">
+
+    <br>
+    <button onclick="location.href='#menu'">
+        Lihat Menu
+    </button>
+    <button onclick="window.location.href='halaman2.html'">
+        Lihat anggota
+    </button>
+    </div>
+</div>
+
+
+<!-- ================= MENU ================= -->
+
+<div id="menu" class="section">
+    <h2 class="fade">Menu Kami</h2>
+    <p class="fade">
+        Ini adalah bagian menu website El Mubin Generation.
+    </p>
+</div>
+
+
+<!-- ================= ABOUT ================= -->
+
+<div id="about" class="section">
+    <h2 class="fade">About Us</h2>
+    <p class="fade">
+        Website ini dibuat untuk mengenang perjalanan
+        EL MUBIN GENERATION dari tahun 2019 sampai 2025.
+    </p>
+</div>
+
+
+<!-- ================= CONTACT ================= -->
+
+<div id="contact" class="section">
+    <h2 class="fade">Contact</h2>
+    <p class="fade">
+        Instagram : @ELMUBIN
+    </p>
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* navbar berubah warna */
+window.onscroll=function(){
+    let navbar=document.getElementById("myNavbar");
+
+    if(window.scrollY>50){
+        navbar.style.background="#3377ff";
+        navbar.style.boxShadow="0 4px 10px rgba(0,0,0,0.3)";
+    }else{
+        navbar.style.background="rgb(47, 92, 255)";
+        navbar.style.boxShadow="none";
+    }
+
+    munculFade();
+};
+
+/* fade muncul */
+const faders=document.querySelectorAll('.fade');
+
+function munculFade(){
+    faders.forEach(el=>{
+        const posisi=el.getBoundingClientRect().top;
+        const layar=window.innerHeight;
+
+        if(posisi<layar-80){
+            el.classList.add("show");
+        }
+    });
+}
+window.addEventListener("scroll", munculFade);
+window.addEventListener("load", munculFade);
+
+</script>
+
+</body>
+</html>
