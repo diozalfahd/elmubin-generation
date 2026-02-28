@@ -17,6 +17,83 @@ body{
     text-align: center;
 }
 
+.bg-logo{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:500px;
+    opacity:0.6;
+    z-index:-1;
+
+    filter: drop-shadow(0 0 20px rgba(0,150,255,0.5));
+    animation: floatLogo 10s ease-in-out infinite,
+           glowLogo 8s ease-in-out infinite;
+}
+           
+@keyframes glowLogo{
+    0%,100%{
+        filter: drop-shadow(0 0 10px rgba(0,150,255,0.3));
+    }
+    50%{
+        filter: drop-shadow(0 0 30px rgba(0,150,255,0.7));
+    }
+}
+
+@keyframes floatLogo{
+    0%{
+        transform:translate(-50%,-50%) translateY(0px);
+    }
+    50%{
+        transform:translate(-50%,-50%) translateY(-20px);
+    }
+    100%{
+        transform:translate(-50%,-50%) translateY(0px);
+    }
+}
+
+.navbar{
+    background-color: #3377ff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding:15px 0;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    z-index:1000;
+    transition:0.4s;
+    backdrop-filter: blur(10px);
+}
+
+.navbar a{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 15px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.navbar a:hover{
+    color:black;
+}
+
+.navbar a::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    background:white;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
 .menu{
     display: flex;
     justify-content: center;
@@ -59,6 +136,15 @@ body{
         </style>
     </head>
 <body>
+
+<img src="logo.png" class="bg-logo">    
+
+   <!-- ================= NAVBAR ================= -->
+
+<div class="navbar" id="myNavbar">
+    <a href="index.html">Home</a>
+</div>
+
     <h1>
         Pilih Anggota
     </h1>
@@ -76,7 +162,7 @@ body{
     
     <br><br>
 
-    <button onclick="location.href='halaman1.html'">
+    <button onclick="location.href='index.html'">
     Kembali
     </button>
       
