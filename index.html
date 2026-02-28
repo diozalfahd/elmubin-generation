@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web El Mubin Generation</title>
 
 <style>
@@ -13,20 +14,20 @@ html{
 body{
     background-color: antiquewhite;
     margin:0;
-    padding-top:50px;
+    padding-top:60px;
     font-family: 'Times New Roman', Times, serif;
 }
 
 .hero{
-    height:100vh;
+    min-height: 100svh;
 
     background-image:
     linear-gradient(rgba(0,0,0,0.4),
     rgba(0,0,0,0.4)),
     url("mbinnu.jpeg");
 
-    background-size:105%;
-    background-position:0% 90%;
+    background-size:cover;
+    background-position:center;
     background-repeat:no-repeat;
 
     display:flex;
@@ -38,7 +39,7 @@ body{
 }
 
 .hero-content{
-    transform:translateY(-30px);
+     max-width:600px;
 }
 
 
@@ -102,7 +103,7 @@ p {
 
 /* ================= IMAGE ================= */
 
-img{
+.hero img{
     width:90%;
     max-width: 400px;
     border-radius:10px;
@@ -144,6 +145,33 @@ button:hover{
 .fade.show{
     opacity:1;
     transform:translateY(0);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+
+.hero{
+    padding:20px;
+    background-position:center;
+}
+
+h1{
+    font-size:24px;
+}
+
+p{
+    font-size:14px;
+}
+
+.hero img{
+    max-width:250px;
+}
+
+.navbar{
+    gap:10px;
+    font-size:14px;
+}
+
 }
 
 </style>
@@ -250,5 +278,4 @@ window.addEventListener("load", munculFade);
 </script>
 
 </body>
-
 </html>
